@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday My Love 💖</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial, Helvetica, sans-serif;
+background:linear-gradient(135deg,#ff9ac6,#ffc6ec,#ffe3fa);
+overflow:hidden;
+}
+
+h1{
+text-align:center;
+color:#ff2f92;
+margin-top:20px;
+}
+
+.quote{
+text-align:center;
+color:#b3005c;
+background:#ffffff70;
+margin:8px 12px;
+padding:8px;
+border-radius:18px;
+font-size:16px;
+}
+
+.carousel{
+width:95%;
+max-width:420px;
+margin:15px auto;
+background:white;
+padding:10px;
+border-radius:18px;
+box-shadow:0 0 20px #ffb6d9;
+}
+
+.carousel img{
+width:100%;
+height:260px;
+object-fit:cover;
+border-radius:15px;
+}
+
+audio{
+width:100%;
+margin-top:10px;
+}
+
+/* Hearts */
+@keyframes float{
+0%{transform:translateY(0);}
+100%{transform:translateY(-700px);opacity:0;}
+}
+.heart{
+position:absolute;
+bottom:-50px;
+color:pink;
+font-size:18px;
+opacity:0.8;
+animation:float 7s linear infinite;
+}
+
+/* Start screen */
+#startScreen{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:#ffcfe6;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+z-index:1000;
+}
+
+#startScreen button{
+padding:14px 28px;
+border:none;
+border-radius:10px;
+background:#ff2f92;
+color:white;
+font-size:18px;
+}
+
+#popup{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:#ffdeef;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+z-index:900;
+}
+
+#popup button{
+padding:12px 25px;
+border:none;
+background:#ff2f92;
+color:white;
+border-radius:10px;
+font-size:18px;
+}
+
+.footer{
+text-align:center;
+color:#ff2f92;
+margin:15px;
+font-size:16px;
+}
+</style>
+</head>
+
+<body>
+
+<div id="startScreen">
+<h2>💖 A Special Surprise For You 💖</h2>
+<button onclick="startMagic()">Start the Surprise 💞</button>
+</div>
+
+<div id="popup" style="display:none;">
+<h2>Will you be my forever? 🥹💞</h2>
+<button onclick="closePopup()">Yes 💖</button>
+</div>
+
+<h1>🎂 Happy Birthday My Love 💖</h1>
+
+<div class="quote">Li, you make every day brighter 💞</div>
+<div class="quote">Golu, my heart smiles because of you 🌸</div>
+<div class="quote">Buggu, you are my everything ✨</div>
+<div class="quote">Angel, you are my dream come true 💖</div>
+<div class="quote">Gelhuu, forever starts with you ❤️</div>
+<div class="quote">Sundrii, I love you endlessly 🥰</div>
+
+<div class="carousel">
+<img id="slide" src="photo1.jpg">
+<audio id="music" controls></audio>
+</div>
+
+<div class="footer">💖 Made only for you 💖</div>
+
+<script>
+// photos
+let photos=[
+"photo1.jpg","photo2.jpg",
+"photo3.jpg","photo4.jpg",
+"photo5.jpg","photo6.jpg",
+"photo7.jpg","photo8.jpg",
+"photo9.jpg","photo10.jpg"
+];
+
+// songs
+let songs=[
+"song1.mp3","song2.mp3","song3.mp3","song4.mp3","song5.mp3"
+];
+
+let current=0;
+let slide=document.getElementById("slide");
+let music=document.getElementById("music");
+
+// hearts
+function createHearts(){
+for(let i=0;i<20;i++){
+let h=document.createElement("div");
+h.className="heart";
+h.innerHTML="❤";
+h.style.left=Math.random()*100+"%";
+h.style.animationDuration=(5+Math.random()*3)+"s";
+document.body.appendChild(h);
+}
+}
+
+// show image + correct song
+function showSlide(){
+slide.src=photos[current];
+let songIndex=Math.floor(current/2);
+music.src=songs[songIndex];
+music.play();
+}
+
+// auto change every 10 seconds
+setInterval(()=>{
+current++;
+if(current>=photos.length) current=0;
+showSlide();
+},10000);
+
+// start screen
+function startMagic(){
+document.getElementById("startScreen").style.display="none";
+showSlide();
+createHearts();
+document.getElementById("popup").style.display="flex";
+}
+
+// popup
+function closePopup(){
+document.getElementById("popup").style.display="none";
+}
+</script>
+
+</body>
+</html>
